@@ -1,0 +1,54 @@
+/* src/components/Sidebar.css */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #FF914D;
+  padding: 20px;
+  color: white;
+  transition: left 0.3s ease;
+  z-index: 100;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.sidebar-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidebar-btn {
+  background-color: #000;
+  color: white;
+  padding: 15px;
+  margin: 5px 0;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sidebar-btn:hover {
+  background-color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
