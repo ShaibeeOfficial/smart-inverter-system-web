@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import "./Status.css"; // ✅ Import the external stylesheet
 
 const dummyStatusHistory = [
   { time: "10:00 AM", status: "Active" },
@@ -15,7 +16,7 @@ const Status = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "readings", "VMnkCzQKEMxF8ab3pbMQ"); // Replace with actual doc ID
+      const docRef = doc(db, "readings", "VMnkCzQKEMxF8ab3pbMQ");
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setStatus(docSnap.data().status);
@@ -26,59 +27,36 @@ const Status = () => {
   }, []);
 
   return (
-    <div style={{ padding: "30px", backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
-      <h2 style={{ fontSize: "26px", marginBottom: "20px" }}>Status Details</h2>
+    <div className="status-page">
+      <h2 className="status-heading">Status Details</h2>
 
-      {/* Live Status Card */}
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "30px",
-        borderRadius: "10px",
-        border: "2px solid #FF914D",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-        marginBottom: "40px",
-        textAlign: "center"
-      }}>
-        <p style={{ fontSize: "20px", marginBottom: "10px" }}>Current Status</p>
-        <p style={{ fontSize: "28px", fontWeight: "bold", color: "#FF914D" }}>
-          {status || "Loading..."}
-        </p>
+      <div className="status-live-box">
+        <p className="status-label">Current Status</p>
+        <p className="status-value">{status || "Loading..."}</p>
       </div>
 
-      {/* Status History Table */}
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "30px",
-        borderRadius: "10px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
-      }}>
-        <h3 style={{ color: "#FF914D", marginBottom: "20px" }}>Status History</h3>
-        <table style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          fontSize: "16px"
-        }}>
+      <div className="status-history-box">
+        <h3 className="status-history-heading">Status History</h3>
+        <table className="status-table">
           <thead>
-            <tr style={{ backgroundColor: "#FF914D", color: "#fff" }}>
-              <th style={{ padding: "12px", textAlign: "left", borderTopLeftRadius: "8px" }}>Time</th>
-              <th style={{ padding: "12px", textAlign: "left", borderTopRightRadius: "8px" }}>Status</th>
+            <tr>
+              <th>Time</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {dummyStatusHistory.map((item, index) => (
-              <tr key={index} style={{
-                backgroundColor: index % 2 === 0 ? "#fdf1e8" : "#fff",
-                transition: "background-color 0.3s"
-              }}>
-                <td style={{ padding: "12px" }}>{item.time}</td>
-                <td style={{
-                  padding: "12px",
-                  fontWeight: "bold",
-                  color:
-                    item.status === "Active" ? "green" :
-                    item.status === "Idle" ? "#999" :
-                    item.status === "Offline" ? "red" : "#333"
-                }}>
+              <tr key={index}>
+                <td>{item.time}</td>
+                <td
+                  className={
+                    item.status === "Active"
+                      ? "status-active"
+                      : item.status === "Idle"
+                      ? "status-idle"
+                      : "status-offline"
+                  }
+                >
                   {item.status}
                 </td>
               </tr>

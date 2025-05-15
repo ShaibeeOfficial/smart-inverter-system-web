@@ -5,6 +5,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer
 } from "recharts";
+import "./Voltage.css"; // ✅ Import external CSS
 
 const dummyVoltageHistory = [
   { time: "10:00", voltage: 210 },
@@ -19,7 +20,7 @@ const Voltage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "readings", "VMnkCzQKEMxF8ab3pbMQ"); // replace with your actual doc ID
+      const docRef = doc(db, "readings", "VMnkCzQKEMxF8ab3pbMQ");
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setVoltage(docSnap.data().voltage);
@@ -32,32 +33,18 @@ const Voltage = () => {
   }, []);
 
   return (
-    <div style={{ padding: "30px", backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
-      <h2 style={{ fontSize: "26px", marginBottom: "20px" }}>Voltage Details</h2>
+    <div className="voltage-page">
+      <h2 className="voltage-heading">Voltage Details</h2>
 
-      {/* 🔴 Current Live Voltage */}
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "30px",
-        borderRadius: "10px",
-        border: "2px solid #FF914D",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-        marginBottom: "30px"
-      }}>
-        <p style={{ fontSize: "20px", marginBottom: "10px" }}>Live Voltage</p>
-        <p style={{ fontSize: "28px", fontWeight: "bold", color: "#FF914D" }}>
+      <div className="voltage-live-box">
+        <p className="voltage-label">Live Voltage</p>
+        <p className="voltage-value">
           {voltage !== null ? `${voltage} V` : "Loading..."}
         </p>
       </div>
 
-      {/* 🔵 Voltage History Chart */}
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
-      }}>
-        <h3 style={{ color: "#FF914D", marginBottom: "20px" }}>Voltage History</h3>
+      <div className="voltage-history-box">
+        <h3 className="voltage-history-heading">Voltage History</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={dummyVoltageHistory}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -65,7 +52,12 @@ const Voltage = () => {
             <YAxis unit=" V" />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="voltage" stroke="#FF914D" strokeWidth={3} />
+            <Line
+              type="monotone"
+              dataKey="voltage"
+              stroke="#FF914D"
+              strokeWidth={3}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -5,6 +5,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer
 } from "recharts";
+import "./Battery.css"; // ✅ Import the CSS
 
 const dummyBatteryHistory = [
   { time: "10:00", battery: 78 },
@@ -30,30 +31,18 @@ const Battery = () => {
   }, []);
 
   return (
-    <div style={{ padding: "30px", backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
-      <h2 style={{ fontSize: "26px", marginBottom: "20px" }}>Battery Details</h2>
+    <div className="battery-page">
+      <h2 className="battery-heading">Battery Details</h2>
 
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "30px",
-        borderRadius: "10px",
-        border: "2px solid #FF914D",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-        marginBottom: "30px"
-      }}>
-        <p style={{ fontSize: "20px", marginBottom: "10px" }}>Live Battery</p>
-        <p style={{ fontSize: "28px", fontWeight: "bold", color: "#FF914D" }}>
+      <div className="live-box">
+        <p className="live-label">Live Battery</p>
+        <p className="live-value">
           {battery !== null ? `${battery}%` : "Loading..."}
         </p>
       </div>
 
-      <div style={{
-        backgroundColor: "#fff",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
-      }}>
-        <h3 style={{ color: "#FF914D", marginBottom: "20px" }}>Battery History</h3>
+      <div className="chart-box">
+        <h3 className="chart-heading">Battery History</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={dummyBatteryHistory}>
             <CartesianGrid strokeDasharray="3 3" />

@@ -1,0 +1,68 @@
+/* src/styles/Voltage.css */
+
+.voltage-page {
+    padding: 30px;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+  }
+  
+  .voltage-heading {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .voltage-live-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #FF914D;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .voltage-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .voltage-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FF914D;
+  }
+  
+  .voltage-history-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .voltage-history-heading {
+    color: #FF914D;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .voltage-heading {
+      font-size: 22px;
+    }
+  
+    .voltage-live-box,
+    .voltage-history-box {
+      padding: 20px;
+    }
+  
+    .voltage-label {
+      font-size: 18px;
+    }
+  
+    .voltage-value {
+      font-size: 24px;
+    }
+  }
+  

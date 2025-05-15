@@ -1,0 +1,75 @@
+/* src/styles/Battery.css */
+
+.battery-page {
+    padding: 30px;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+  }
+  
+  .battery-heading {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .live-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #FF914D;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .live-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .live-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FF914D;
+  }
+  
+  .chart-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-heading {
+    color: #FF914D;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .battery-heading {
+      font-size: 22px;
+    }
+  
+    .live-box {
+      padding: 20px;
+    }
+  
+    .live-label {
+      font-size: 18px;
+    }
+  
+    .live-value {
+      font-size: 24px;
+    }
+  
+    .chart-box {
+      padding: 15px;
+    }
+  
+    .chart-heading {
+      font-size: 18px;
+    }
+  }
+  
