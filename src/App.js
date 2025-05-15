@@ -9,18 +9,67 @@ import Battery from "./pages/Battery";
 import Ampere from "./pages/Ampere";
 import Status from "./pages/Status";
 import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/voltage" element={<Voltage />} />
-        <Route path="/battery" element={<Battery />} />
-        <Route path="/ampere" element={<Ampere />} />
-        <Route path="/status" element={<Status />} />        
-        <Route path="/profile" element={<Profile />} />        
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/voltage"
+          element={
+            <ProtectedRoute>
+              <Voltage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/ampere"
+          element={
+            <ProtectedRoute>
+              <Ampere />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/battery"
+          element={
+            <ProtectedRoute>
+              <Battery />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/status"
+          element={
+            <ProtectedRoute>
+              <Status />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <ToastContainer />
     </Router>
