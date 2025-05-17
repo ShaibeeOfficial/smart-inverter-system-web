@@ -6,6 +6,7 @@ import {
   Tooltip, Legend, ResponsiveContainer
 } from "recharts";
 import "./Ampere.css"; // ✅ Import the CSS
+import Header from "../components/Header";
 
 const dummyAmpereHistory = [
   { time: "10:00", ampere: 1.5 },
@@ -31,9 +32,9 @@ const Ampere = () => {
   }, []);
 
   return (
+    <div>
+      <Header />
     <div className="ampere-page">
-      <h2 className="ampere-heading">Ampere Details</h2>
-
       <div className="live-box">
         <p className="live-label">Live Ampere</p>
         <p className="live-value">
@@ -54,6 +55,7 @@ const Ampere = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+    </div>
     </div>
   );
 };

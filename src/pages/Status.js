@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./Status.css"; // ✅ Import the external stylesheet
+import Header from "../components/Header";
 
 const dummyStatusHistory = [
   { time: "10:00 AM", status: "Active" },
@@ -27,9 +28,9 @@ const Status = () => {
   }, []);
 
   return (
+    <div>
+      <Header/>
     <div className="status-page">
-      <h2 className="status-heading">Status Details</h2>
-
       <div className="status-live-box">
         <p className="status-label">Current Status</p>
         <p className="status-value">{status || "Loading..."}</p>
@@ -64,6 +65,7 @@ const Status = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

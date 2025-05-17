@@ -1,39 +1,44 @@
 import React from 'react';
-import { auth } from '../firebase'; // Ensure firebase is initialized
-import { useNavigate } from 'react-router-dom'; // For navigating back to the dashboard or previous page
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 import './Profile.css';
+import Header from '../components/Header';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Profile = () => {
-  const navigate = useNavigate(); // useNavigate is used instead of useHistory
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     auth.signOut();
-    navigate('/'); // Redirect to login page after logout
+    navigate('/');
   };
 
-  const handleBack = () => {
-    navigate(-1); // Navigate to the previous page (similar to history.goBack() in v5)
-  };
 
   return (
-    <div className="profile-page">
-      <div className="profile-container">
-        <div className="profile-header">
-          <h2>Welcome to Your Profile</h2>
-        </div>
-        <div className="profile-info">
-          <div className="profile-item">
-            <label>Name:</label>
-            <span>Umair</span>
+    <div>
+      <Header />
+      <div className="profile-wrapper">
+        <div className="profile-glass-card">
+          <div className="profile-avatar-wrapper">
+            <FaUserCircle className="profile-avatar" />
+            <h1 className="profile-name">Umair</h1>
+            <p className="profile-email">umair@gmail.com</p>
           </div>
-          <div className="profile-item">
-            <label>Email:</label>
-            <span>umair@gmail.com</span>
+
+          <div className="profile-details">
+            <div className="detail-row">
+              <label style={{color:'#000'}}>Name</label>
+              <span style={{color:'#000'}}>Umair</span>
+            </div>
+            <div className="detail-row">
+              <label style={{color:'#000'}}>Email</label>
+              <span style={{color:'#000'}}>umair@gmail.com</span>
+            </div>
           </div>
-        </div>
-        <div className="profile-footer">
-          <button className="back-btn" onClick={handleBack}>Back</button>
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+
+          <div className="profile-actions">
+            <button className="btn-primary" onClick={handleLogout}>Logout</button>
+          </div>
         </div>
       </div>
     </div>

@@ -10,12 +10,22 @@ import Ampere from "./pages/Ampere";
 import Status from "./pages/Status";
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import WelcomeScreen from './pages/WelcomeScreen';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+
+        <Route
+          path="/welcome"
+          element={
+            <ProtectedRoute>
+              <WelcomeScreen />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/dashboard"

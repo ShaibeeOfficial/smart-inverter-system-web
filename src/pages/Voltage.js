@@ -6,6 +6,7 @@ import {
   Tooltip, Legend, ResponsiveContainer
 } from "recharts";
 import "./Voltage.css"; // ✅ Import external CSS
+import Header from "../components/Header";
 
 const dummyVoltageHistory = [
   { time: "10:00", voltage: 210 },
@@ -33,9 +34,9 @@ const Voltage = () => {
   }, []);
 
   return (
+    <div>
+      <Header />
     <div className="voltage-page">
-      <h2 className="voltage-heading">Voltage Details</h2>
-
       <div className="voltage-live-box">
         <p className="voltage-label">Live Voltage</p>
         <p className="voltage-value">
@@ -61,6 +62,7 @@ const Voltage = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+    </div>
     </div>
   );
 };

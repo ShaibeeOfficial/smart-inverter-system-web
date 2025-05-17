@@ -6,6 +6,7 @@ import {
   Tooltip, Legend, ResponsiveContainer
 } from "recharts";
 import "./Battery.css"; // ✅ Import the CSS
+import Header from "../components/Header";
 
 const dummyBatteryHistory = [
   { time: "10:00", battery: 78 },
@@ -31,9 +32,9 @@ const Battery = () => {
   }, []);
 
   return (
+    <div>
+      <Header />
     <div className="battery-page">
-      <h2 className="battery-heading">Battery Details</h2>
-
       <div className="live-box">
         <p className="live-label">Live Battery</p>
         <p className="live-value">
@@ -54,6 +55,7 @@ const Battery = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+    </div>
     </div>
   );
 };
